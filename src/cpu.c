@@ -43,6 +43,8 @@ static void op_dec_r8(CPU *cpu, uint8_t *r) {
   cpu_set_flag(cpu, N);
 }
 
+static void op_dec_r16(uint16_t *reg) { (*reg)--; }
+
 static void op_rlc_r8(CPU *cpu, uint8_t *r) {
   uint8_t carry_bit = (*r) >> 7;
   if (carry_bit)
@@ -74,6 +76,17 @@ static void op_rlc_mem(CPU *cpu, Bus *bus, uint16_t addr) {
   cpu_clear_flag(cpu, N);
   cpu_clear_flag(cpu, H);
   bus_write(bus, addr, data);
+}
+
+static void op_add_r16_r16(CPU *cpu, uint16_t *dest, uint16_t src) {
+  *dest += src;
+  if (*dest > 0x7FF) {
+    cpu_set_flag(cpu, H);
+  }
+  if (*dest > 0xFFFF) {
+    cpu_set_flag(cpu, C);
+  }
+  cpu_clear_flag(cpu, N);
 }
 
 uint8_t cpu_step(CPU *cpu, Bus *bus) {
@@ -113,8 +126,26 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     bus_write(bus, addr + 1, (cpu->sp >> 8));
   }
     return 5;
-  case 0x09:
-
+  case 0x09: // add hl, bc
+    op_add_r16_r16(cpu, &cpu->hl, cpu->bc);
+    return 2;
+  case 0x0A: // ld a, [bc]
+    cpu->a = bus_read8(bus, cpu->bc);
+    return 2;
+  case 0x0B: // dec bc
+    op_dec_r16(&cpu->bc);
+    return 2;
+  case 0x0C: // inc c
+    op_inc_r8(cpu, &cpu->c);
+    return 1;
+  case 0x0D: // dec c
+    op_dec_r8(cpu, &cpu->c);
+    return 1;
+  case 0x0E: // ld c, n8
+    cpu->c = bus_read8(bus, cpu->pc++);
+    return 2;
+  case 0x0F:
+    // TODO
   default:
     printf("Invalid Opcode: %X", opcode);
     exit(EXIT_FAILURE);
