@@ -87,9 +87,11 @@ void bus_ld_rom(Bus *bus, const char *path) {
     return;
   }
   long size = ftell(file);
-  char temp[256];
+  int temp;
   bus->rom = malloc(size * sizeof(uint8_t));
-  while (fgets(temp, sizeof(temp), file) != NULL) {
-    strcat();
+
+  int ct = 0;
+  while ((temp = fgetc(file)) != EOF) {
+    bus->rom[ct] = (uint8_t)temp;
   }
 }
