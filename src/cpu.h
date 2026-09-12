@@ -1,8 +1,10 @@
 #ifndef CPU_H
 #define CPU_H
 #include "bus.h"
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 typedef struct {
   union {
@@ -37,11 +39,12 @@ typedef struct {
   uint16_t pc;
 } CPU;
 
-typedef enum { Z = 0, N = 1, H = 2, C = 3 } Flags;
+typedef enum { FLAG_Z = 0, FLAG_N = 1, FLAG_H = 2, FLAG_C = 3 } Flags;
 
-void cpu_set_flag(CPU *cpu, Flags flag);
-void cpu_clear_flag(CPU *cpu, Flags flag);
+void cpu_set_flag(CPU *cpu, Flags flag, bool val);
 uint8_t cpu_get_flag(CPU *cpu, Flags flag);
+uint8_t cpu_get_imm8(CPU *cpu, Bus *bus);
+uint16_t cpu_get_imm16(CPU *cpu, Bus *bus);
 
 uint8_t cpu_step(CPU *cpu, Bus *bus);
 
