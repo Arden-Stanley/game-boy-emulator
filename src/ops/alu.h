@@ -21,4 +21,17 @@ uint8_t op_dec_mhl(CPU *cpu, Bus *bus);
 uint8_t op_dec_r16(uint16_t *reg);
 uint8_t op_dec_sp(CPU *cpu);
 
+uint8_t op_inc_r8(CPU *cpu, uint8_t *reg);
+uint8_t op_inc_mhl(CPU *cpu, Bus *bus);
+uint8_t op_inc_r16(uint16_t *reg);
+uint8_t op_inc_sp(CPU *cpu);
+
+uint8_t op_sbc_a_r8(CPU *cpu, uint8_t val);
+uint8_t op_sbc_a_mhl(CPU *cpu, Bus *bus);
+uint8_t op_sbc_a_n8(CPU *cpu, Bus *bus);
+
+uint8_t op_sub_a_r8(CPU *cpu, uint8_t val);
+uint8_t op_sub_a_mhl(CPU *cpu, Bus *bus);
+uint8_t op_sub_a_n8(CPU *cpu, Bus *bus);
+
 #endif
