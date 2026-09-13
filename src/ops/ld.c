@@ -99,12 +99,14 @@ uint8_t op_ld_hl_spe8(CPU *cpu, Bus *bus) {
   cpu->hl = val;
   cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
-  uint8_t mask1 = offset & 0x0F;
-  uint8_t mask2 = (uint8_t)offset & 0x0F;
-  if ((mask1 + mask2) > 0x0F) {
+
+  if ((((uint8_t)offset & 0x0F) + (cpu->sp & 0x0F)) > 0x0F)
     cpu_set_flag(cpu, FLAG_H, 1);
-  }
-  // TODO: full carry for bit 7 overflow
+
+  uint16_t temp = ((uint8_t)offset + cpu->sp);
+  if (temp > 0x00FF)
+    cpu_set_flag(cpu, FLAG_C, 1);
+
   return 3;
 }
 uint8_t op_ld_sp_hl(CPU *cpu) {
