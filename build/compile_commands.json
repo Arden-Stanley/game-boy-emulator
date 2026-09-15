@@ -1,0 +1,44 @@
+[
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/main.c.o -c /home/arden/Projects/game-boy-emulator/src/main.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/main.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/main.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/bus.c.o -c /home/arden/Projects/game-boy-emulator/src/bus.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/bus.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/bus.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/cpu.c.o -c /home/arden/Projects/game-boy-emulator/src/cpu.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/cpu.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/cpu.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/ops/ld.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/ld.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/ops/ld.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/ops/alu.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/alu.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/ops/alu.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/ops/bit.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/bit.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/ops/bit.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o -c /home/arden/Projects/game-boy-emulator/src/tests/ld_test.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/tests/ld_test.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o"
+}
+]
