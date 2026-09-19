@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 
+#define IF 0xFF0F
+#define IE 0xFFFF
+
 typedef struct {
   uint8_t *rom;
   uint32_t rom_size;

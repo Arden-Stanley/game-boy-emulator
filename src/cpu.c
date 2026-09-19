@@ -15,8 +15,27 @@ uint16_t cpu_get_imm16(CPU *cpu, Bus *bus) {
   return data;
 }
 
+static uint8_t rpt_ct = 0;
+static uint16_t lst_pc = 0;
+
 uint8_t cpu_step(CPU *cpu, Bus *bus) {
+  if (cpu->halted == 1) {
+    if ((bus_read8(bus, IE) & bus_read8(bus, IF)) == 0) {
+      return 1;
+    }
+  }
+  // TODO: i need to figure something out with this
   uint8_t opcode = bus_read8(bus, cpu->pc++);
+  if (cpu->repeat == 1) {
+    rpt_ct++;
+    if (rpt_ct == 2) {
+      opcode = bus_read8(bus, lst_pc);
+      rpt_ct = 0;
+      cpu->repeat = 0;
+    }
+    lst_pc = cpu->pc;
+  }
+
   printf("Servicing Opcode: %02X\n", opcode);
 
   switch (opcode) {
@@ -318,23 +337,104 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_sbc_a_mhl(cpu, bus);
   case 0x9F:
     return op_sbc_a_r8(cpu, cpu->a);
-  // TODO: Continue opcodes for alu past this point
+  case 0xA0:
+    return op_and_a_r8(cpu, cpu->b);
+  case 0xA1:
+    return op_and_a_r8(cpu, cpu->c);
+  case 0xA2:
+    return op_and_a_r8(cpu, cpu->d);
+  case 0xA3:
+    return op_and_a_r8(cpu, cpu->e);
+  case 0xA4:
+    return op_and_a_r8(cpu, cpu->h);
+  case 0xA5:
+    return op_and_a_r8(cpu, cpu->l);
+  case 0xA6:
+    return op_and_a_mhl(cpu, bus);
+  case 0xA7:
+    return op_and_a_r8(cpu, cpu->a);
+  case 0xA8:
+    return op_xor_a_r8(cpu, cpu->b);
+  case 0xA9:
+    return op_xor_a_r8(cpu, cpu->c);
+  case 0xAA:
+    return op_xor_a_r8(cpu, cpu->d);
+  case 0xAB:
+    return op_xor_a_r8(cpu, cpu->e);
+  case 0xAC:
+    return op_xor_a_r8(cpu, cpu->h);
+  case 0xAD:
+    return op_xor_a_r8(cpu, cpu->l);
+  case 0xAE:
+    return op_xor_a_mhl(cpu, bus);
+  case 0xAF:
+    return op_xor_a_r8(cpu, cpu->a);
+  case 0xB0:
+    return op_or_a_r8(cpu, cpu->b);
+  case 0xB1:
+    return op_or_a_r8(cpu, cpu->c);
+  case 0xB2:
+    return op_or_a_r8(cpu, cpu->d);
+  case 0xB3:
+    return op_or_a_r8(cpu, cpu->e);
+  case 0xB4:
+    return op_or_a_r8(cpu, cpu->h);
+  case 0xB5:
+    return op_or_a_r8(cpu, cpu->l);
+  case 0xB6:
+    return op_or_a_mhl(cpu, bus);
+  case 0xB7:
+    return op_or_a_r8(cpu, cpu->a);
+  case 0xB8:
+    return op_cp_a_r8(cpu, cpu->b);
+  case 0xB9:
+    return op_cp_a_r8(cpu, cpu->c);
+  case 0xBA:
+    return op_cp_a_r8(cpu, cpu->d);
+  case 0xBB:
+    return op_cp_a_r8(cpu, cpu->e);
+  case 0xBC:
+    return op_cp_a_r8(cpu, cpu->h);
+  case 0xBD:
+    return op_cp_a_r8(cpu, cpu->l);
+  case 0xBE:
+    return op_cp_a_mhl(cpu, bus);
+  case 0xBF:
+    return op_cp_a_r8(cpu, cpu->a);
+  case 0xC6:
+    return op_add_a_n8(cpu, bus);
+  case 0xCE:
+    return op_adc_a_n8(cpu, bus);
+  case 0xD6:
+    return op_sub_a_n8(cpu, bus);
+  case 0xDE:
+    return op_sbc_a_n8(cpu, bus);
   case 0xE0:
     return op_ldh_mn16_a(cpu, bus);
   case 0xE2:
     return op_ldh_mc_a(cpu, bus);
+  case 0xE6:
+    return op_and_a_n8(cpu, bus);
+  case 0xE8:
+    return op_add_sp_e8(cpu, bus);
   case 0xEA:
     return op_ld_mn16_a(cpu, bus);
+  case 0xEE:
+    return op_xor_a_n8(cpu, bus);
   case 0xF0:
     return op_ldh_a_mn16(cpu, bus);
   case 0xF2:
     return op_ldh_a_mc(cpu, bus);
+  case 0xF6:
+    return op_or_a_n8(cpu, bus);
   case 0xF8:
     return op_ld_hl_spe8(cpu, bus);
   case 0xF9:
     return op_ld_sp_hl(cpu);
   case 0xFA:
     return op_ld_a_mn16(cpu, bus);
+  case 0xFE:
+    return op_cp_a_n8(cpu, bus);
   default:
     printf("Invalid Opcode: %X", opcode);
     exit(EXIT_FAILURE);

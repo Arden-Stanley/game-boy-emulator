@@ -310,3 +310,14 @@ uint8_t op_sub_a_n8(CPU *cpu, Bus *bus) {
     cpu_set_flag(cpu, FLAG_C, 1);
   return 2;
 }
+
+uint8_t op_ccf(CPU *cpu) {
+  uint8_t c = cpu_get_flag(cpu, FLAG_C) ^ 1;
+  cpu_set_flag(cpu, FLAG_C, c);
+  return 1;
+}
+
+uint8_t op_scf(CPU *cpu) {
+  cpu_set_flag(cpu, FLAG_C, 1);
+  return 1;
+}
