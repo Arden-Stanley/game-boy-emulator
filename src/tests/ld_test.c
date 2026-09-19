@@ -46,5 +46,43 @@ void ld_test() {
   assert(bus_read8(&bus, 0x7000) == 0x12);
   printf("Opcode 0x02 succeeded\n\n");
 
+  bus_write(&bus, 0x104, 0x06);
+  bus_write(&bus, 0x105, 0x89);
+  cpu_step(&cpu, &bus);
+  printf("Running 0x06 Test: ld B, n8\n");
+  print_regs(&cpu);
+  assert(cpu.b == 0x89);
+  printf("Opcode 0x06 succedded\n\n");
+
+  cpu.sp = 0x1293;
+  bus_write(&bus, 0x106, 0x08);
+  bus_write(&bus, 0x107, 0x01);
+  bus_write(&bus, 0x108, 0x70);
+  cpu_step(&cpu, &bus);
+  printf("Running 0x08 Test: ld B, n8\n");
+  print_regs(&cpu);
+  printf("Bus 0x7001-0x7002: 0x%X, 0x%X\n", bus_read8(&bus, 0x7001),
+         bus_read8(&bus, 0x7002));
+  assert(bus_read8(&bus, 0x7001) == 0x93);
+  assert(bus_read8(&bus, 0x7002) == 0x12);
+  printf("Opcode 0x08 succeeded\n\n");
+
+  bus_write(&bus, 0x109, 0x0A);
+  cpu.bc = 0x7003;
+  bus_write(&bus, 0x7003, 0x15);
+  cpu_step(&cpu, &bus);
+  printf("Running 0x0A Test: ld A, [BC]\n");
+  print_regs(&cpu);
+  assert(cpu.a == 0x15);
+  printf("Opcode 0x0A Succeeded\n\n");
+
+  bus_write(&bus, 0x10A, 0x0E);
+  bus_write(&bus, 0x10B, 0x67);
+  cpu_step(&cpu, &bus);
+  printf("Running 0x0E Test: ld C, n8\n");
+  print_regs(&cpu);
+  assert(cpu.c == 0x67);
+  printf("Opcode 0x0E Succeeded\n\n");
+
   free(bus.rom);
 }

@@ -90,7 +90,7 @@ uint8_t op_ld_sp_n16(CPU *cpu, Bus *bus) {
 uint8_t op_ld_mn16_sp(CPU *cpu, Bus *bus) {
   uint16_t addr = cpu_get_imm16(cpu, bus);
   bus_write(bus, addr, cpu->sp & 0xFF);
-  bus_write(bus, addr++, (cpu->sp >> 8));
+  bus_write(bus, addr + 1, (cpu->sp >> 8));
   return 5;
 }
 uint8_t op_ld_hl_spe8(CPU *cpu, Bus *bus) {
