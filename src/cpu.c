@@ -15,28 +15,35 @@ uint16_t cpu_get_imm16(CPU *cpu, Bus *bus) {
   return data;
 }
 
+static uint8_t wait_ct = 0;
 static uint8_t rpt_ct = 0;
-static uint16_t lst_pc = 0;
+static uint8_t last_op = 0;
 
 uint8_t cpu_step(CPU *cpu, Bus *bus) {
-  if (cpu->halted == 1) {
-    if ((bus_read8(bus, IE) & bus_read8(bus, IF)) == 0) {
-      return 1;
+  if (cpu->halted) {
+    if (bus_read8(bus, IF) & bus_read8(bus, IE)) {
+      return 0;
     }
+    return 1;
   }
-  // TODO: i need to figure something out with this
   uint8_t opcode = bus_read8(bus, cpu->pc++);
-  if (cpu->repeat == 1) {
-    rpt_ct++;
-    if (rpt_ct == 2) {
-      opcode = bus_read8(bus, lst_pc);
-      rpt_ct = 0;
-      cpu->repeat = 0;
+  if (cpu->enable_intrpt) {
+    wait_ct++;
+    if (wait_ct == 2) {
+      wait_ct = 0;
+      cpu->ime = 1;
     }
-    lst_pc = cpu->pc;
   }
-
-  printf("Servicing Opcode: %02X\n", opcode);
+  if (cpu->repeat) {
+    rpt_ct++;
+    if (rpt_ct == 1) {
+      last_op = opcode;
+    }
+    if (rpt_ct == 2) {
+      opcode = last_op;
+      rpt_ct = 0;
+    }
+  }
 
   switch (opcode) {
   case 0x00:
