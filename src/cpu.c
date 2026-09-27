@@ -1,7 +1,10 @@
 #include "cpu.h"
 #include "ops/alu.h"
 #include "ops/bit.h"
+#include "ops/ctrl.h"
+#include "ops/itrpt.h"
 #include "ops/ld.h"
+#include "ops/misc.h"
 
 void cpu_set_flag(CPU *cpu, Flags flag, bool val) {
   cpu->f = (cpu->f & ~(1 << flag)) | (val << flag);
@@ -15,33 +18,33 @@ uint16_t cpu_get_imm16(CPU *cpu, Bus *bus) {
   return data;
 }
 
-static uint8_t wait_ct = 0;
-static uint8_t rpt_ct = 0;
-static uint8_t last_op = 0;
-
 uint8_t cpu_step(CPU *cpu, Bus *bus) {
+  if (cpu->stopped) {
+    return 0;
+  }
   if (cpu->halted) {
     if (bus_read8(bus, IF) & bus_read8(bus, IE)) {
+      cpu->halted = 0;
       return 0;
     }
     return 1;
   }
-  uint8_t opcode = bus_read8(bus, cpu->pc++);
-  if (cpu->enable_intrpt) {
-    wait_ct++;
-    if (wait_ct == 2) {
-      wait_ct = 0;
-      cpu->ime = 1;
-    }
+
+  uint8_t opcode;
+  if (cpu->halt_bug) {
+    opcode = bus_read8(bus, cpu->pc);
+    cpu->halt_bug = 0;
+  } else {
+    opcode = bus_read8(bus, cpu->pc++);
   }
-  if (cpu->repeat) {
-    rpt_ct++;
-    if (rpt_ct == 1) {
-      last_op = opcode;
-    }
-    if (rpt_ct == 2) {
-      opcode = last_op;
-      rpt_ct = 0;
+
+  if (cpu->enable_intrpt) {
+    if (cpu->enable_intrpt == 1) {
+      cpu->enable_intrpt++;
+    } else if (cpu->enable_intrpt == 2) {
+      cpu->enable_intrpt = 0;
+      cpu->ime = 1;
+      cpu->enable_intrpt = 0;
     }
   }
 
@@ -78,6 +81,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_ld_r8_n8(cpu, bus, &cpu->c);
   case 0x0F:
     return op_rrca(cpu);
+  case 0x10:
+    return op_stop(cpu);
   case 0x11:
     return op_ld_r16_n16(cpu, bus, &cpu->de);
   case 0x12:
@@ -92,6 +97,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_ld_r8_n8(cpu, bus, &cpu->d);
   case 0x17:
     return op_rla(cpu);
+  case 0x18:
+    return op_jr_n16(cpu, bus);
   case 0x19:
     return op_add_hl_r16(cpu, cpu->de);
   case 0x1A:
@@ -106,6 +113,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_ld_r8_n8(cpu, bus, &cpu->e);
   case 0x1F:
     return op_rra(cpu);
+  case 0x20:
+    return op_jr_cc_n16(cpu, bus, CC_NZ);
   case 0x21:
     return op_ld_r16_n16(cpu, bus, &cpu->hl);
   case 0x22:
@@ -118,6 +127,10 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_dec_r8(cpu, &cpu->h);
   case 0x26:
     return op_ld_r8_n8(cpu, bus, &cpu->h);
+  case 0x27:
+    return op_daa(cpu);
+  case 0x28:
+    return op_jr_cc_n16(cpu, bus, CC_Z);
   case 0x29:
     return op_add_hl_r16(cpu, cpu->hl);
   case 0x2A:
@@ -130,6 +143,10 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_dec_r8(cpu, &cpu->l);
   case 0x2E:
     return op_ld_r8_n8(cpu, bus, &cpu->l);
+  case 0x2F:
+    return op_cpl(cpu);
+  case 0x30:
+    return op_jr_cc_n16(cpu, bus, CC_NC);
   case 0x31:
     return op_ld_sp_n16(cpu, bus);
   case 0x32:
@@ -142,6 +159,10 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_dec_mhl(cpu, bus);
   case 0x36:
     return op_ld_mhl_n8(cpu, bus);
+  case 0x37:
+    return op_scf(cpu);
+  case 0x38:
+    return op_jr_cc_n16(cpu, bus, CC_C);
   case 0x39:
     return op_add_hl_sp(cpu);
   case 0x3A:
@@ -154,6 +175,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_dec_r8(cpu, &cpu->a);
   case 0x3E:
     return op_ld_r8_n8(cpu, bus, &cpu->a);
+  case 0x3F:
+    return op_ccf(cpu);
   case 0x40:
     return op_ld_r8_r8(&cpu->b, cpu->b);
   case 0x41:
@@ -262,6 +285,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_ld_mhl_r8(cpu, bus, cpu->h);
   case 0x75:
     return op_ld_mhl_r8(cpu, bus, cpu->l);
+  case 0x76:
+    return op_halt(cpu, bus);
   case 0x77:
     return op_ld_mhl_r8(cpu, bus, cpu->a);
   case 0x78:
@@ -408,40 +433,112 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     return op_cp_a_mhl(cpu, bus);
   case 0xBF:
     return op_cp_a_r8(cpu, cpu->a);
+  case 0xC0:
+    return op_ret_cc(cpu, bus, CC_NZ);
+  case 0xC1:
+    return op_pop_r16(cpu, bus, &cpu->bc);
+  case 0xC2:
+    return op_jp_cc_n16(cpu, bus, CC_NZ);
+  case 0xC3:
+    return op_jp_n16(cpu, bus);
+  case 0xC4:
+    return op_call_cc_n16(cpu, bus, CC_NZ);
+  case 0xC5:
+    return op_push_r16(cpu, bus, cpu->bc);
   case 0xC6:
     return op_add_a_n8(cpu, bus);
+  case 0xC7:
+    return op_rst_vec(cpu, bus, 0x00);
+  case 0xC8:
+    return op_ret_cc(cpu, bus, CC_Z);
+  case 0xC9:
+    return op_ret(cpu, bus);
+  case 0xCA:
+    return op_jp_cc_n16(cpu, bus, CC_Z);
+  case 0xCB:
+    // TODO: prefixed
+  case 0xCC:
+    return op_call_cc_n16(cpu, bus, CC_Z);
+  case 0xCD:
+    return op_call_n16(cpu, bus);
   case 0xCE:
     return op_adc_a_n8(cpu, bus);
+  case 0xCF:
+    return op_rst_vec(cpu, bus, 0x08);
+  case 0xD0:
+    return op_ret_cc(cpu, bus, CC_NC);
+  case 0xD1:
+    return op_pop_r16(cpu, bus, &cpu->de);
+  case 0xD2:
+    return op_jp_cc_n16(cpu, bus, CC_NC);
+  case 0xD4:
+    return op_call_cc_n16(cpu, bus, CC_NC);
+  case 0xD5:
+    return op_push_r16(cpu, bus, cpu->de);
   case 0xD6:
     return op_sub_a_n8(cpu, bus);
+  case 0xD7:
+    return op_rst_vec(cpu, bus, 0x10);
+  case 0xD8:
+    return op_ret_cc(cpu, bus, CC_C);
+  case 0xD9:
+    return op_reti(cpu, bus);
+  case 0xDA:
+    return op_jp_cc_n16(cpu, bus, CC_C);
+  case 0xDC:
+    return op_call_cc_n16(cpu, bus, CC_C);
   case 0xDE:
     return op_sbc_a_n8(cpu, bus);
+  case 0xDF:
+    return op_rst_vec(cpu, bus, 0x18);
   case 0xE0:
     return op_ldh_mn16_a(cpu, bus);
+  case 0xE1:
+    return op_pop_r16(cpu, bus, &cpu->hl);
   case 0xE2:
     return op_ldh_mc_a(cpu, bus);
+  case 0xE5:
+    return op_push_r16(cpu, bus, cpu->hl);
   case 0xE6:
     return op_and_a_n8(cpu, bus);
+  case 0xE7:
+    return op_rst_vec(cpu, bus, 0x20);
   case 0xE8:
     return op_add_sp_e8(cpu, bus);
+  case 0xE9:
+    return op_jp_hl(cpu);
   case 0xEA:
     return op_ld_mn16_a(cpu, bus);
   case 0xEE:
     return op_xor_a_n8(cpu, bus);
+  case 0xEF:
+    return op_rst_vec(cpu, bus, 0x28);
   case 0xF0:
     return op_ldh_a_mn16(cpu, bus);
+  case 0xF1:
+    return op_pop_af(cpu, bus);
   case 0xF2:
     return op_ldh_a_mc(cpu, bus);
+  case 0xF3:
+    return op_di(cpu);
+  case 0xF5:
+    return op_push_af(cpu, bus);
   case 0xF6:
     return op_or_a_n8(cpu, bus);
+  case 0xF7:
+    return op_rst_vec(cpu, bus, 0x30);
   case 0xF8:
     return op_ld_hl_spe8(cpu, bus);
   case 0xF9:
     return op_ld_sp_hl(cpu);
   case 0xFA:
     return op_ld_a_mn16(cpu, bus);
+  case 0xFB:
+    return op_ei(cpu);
   case 0xFE:
     return op_cp_a_n8(cpu, bus);
+  case 0xFF:
+    return op_rst_vec(cpu, bus, 0x38);
   default:
     printf("Invalid Opcode: %X", opcode);
     exit(EXIT_FAILURE);

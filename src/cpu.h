@@ -39,8 +39,9 @@ typedef struct {
   uint16_t pc;
   bool ime;
   bool halted;
-  bool repeat;
-  bool enable_intrpt;
+  uint8_t enable_intrpt;
+  bool stopped;
+  bool halt_bug;
 } CPU;
 
 typedef enum { FLAG_Z = 0, FLAG_N = 1, FLAG_H = 2, FLAG_C = 3 } Flags;

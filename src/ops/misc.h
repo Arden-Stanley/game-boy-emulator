@@ -4,8 +4,7 @@
 #include "../cpu.h"
 #include <stdint.h>
 
-uint8_t op_daa();
-uint8_t op_nop();
-uint8_t op_stop();
+uint8_t op_daa(CPU *cpu);
+uint8_t op_stop(CPU *cpu);
 
 #endif
