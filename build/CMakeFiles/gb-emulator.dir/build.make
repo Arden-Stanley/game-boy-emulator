@@ -156,19 +156,61 @@ CMakeFiles/gb-emulator.dir/src/ops/bit.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/ops/bit.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/ops/bit.c -o CMakeFiles/gb-emulator.dir/src/ops/bit.c.s
 
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o: CMakeFiles/gb-emulator.dir/flags.make
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o: /home/arden/Projects/game-boy-emulator/src/tests/ld_test.c
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o: CMakeFiles/gb-emulator.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o -MF CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o.d -o CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o -c /home/arden/Projects/game-boy-emulator/src/tests/ld_test.c
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o: CMakeFiles/gb-emulator.dir/flags.make
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o: /home/arden/Projects/game-boy-emulator/src/ops/pfx.c
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o: CMakeFiles/gb-emulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o -MF CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o.d -o CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/pfx.c
 
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arden/Projects/game-boy-emulator/src/tests/ld_test.c > CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.i
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/gb-emulator.dir/src/ops/pfx.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arden/Projects/game-boy-emulator/src/ops/pfx.c > CMakeFiles/gb-emulator.dir/src/ops/pfx.c.i
 
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/tests/ld_test.c -o CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.s
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/ops/pfx.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/ops/pfx.c -o CMakeFiles/gb-emulator.dir/src/ops/pfx.c.s
+
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.o: CMakeFiles/gb-emulator.dir/flags.make
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.o: /home/arden/Projects/game-boy-emulator/src/ops/misc.c
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.o: CMakeFiles/gb-emulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/gb-emulator.dir/src/ops/misc.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gb-emulator.dir/src/ops/misc.c.o -MF CMakeFiles/gb-emulator.dir/src/ops/misc.c.o.d -o CMakeFiles/gb-emulator.dir/src/ops/misc.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/misc.c
+
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/gb-emulator.dir/src/ops/misc.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arden/Projects/game-boy-emulator/src/ops/misc.c > CMakeFiles/gb-emulator.dir/src/ops/misc.c.i
+
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/ops/misc.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/ops/misc.c -o CMakeFiles/gb-emulator.dir/src/ops/misc.c.s
+
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o: CMakeFiles/gb-emulator.dir/flags.make
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o: /home/arden/Projects/game-boy-emulator/src/ops/ctrl.c
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o: CMakeFiles/gb-emulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o -MF CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o.d -o CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/ctrl.c
+
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arden/Projects/game-boy-emulator/src/ops/ctrl.c > CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.i
+
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/ops/ctrl.c -o CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.s
+
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o: CMakeFiles/gb-emulator.dir/flags.make
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o: /home/arden/Projects/game-boy-emulator/src/ops/itrpt.c
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o: CMakeFiles/gb-emulator.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o -MF CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o.d -o CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/itrpt.c
+
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/arden/Projects/game-boy-emulator/src/ops/itrpt.c > CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.i
+
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/arden/Projects/game-boy-emulator/src/ops/itrpt.c -o CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.s
 
 # Object files for target gb-emulator
 gb__emulator_OBJECTS = \
@@ -178,7 +220,10 @@ gb__emulator_OBJECTS = \
 "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o" \
 "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o" \
 "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o" \
-"CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o"
+"CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o" \
+"CMakeFiles/gb-emulator.dir/src/ops/misc.c.o" \
+"CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o" \
+"CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o"
 
 # External object files for target gb-emulator
 gb__emulator_EXTERNAL_OBJECTS =
@@ -189,11 +234,14 @@ gb-emulator: CMakeFiles/gb-emulator.dir/src/cpu.c.o
 gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/ld.c.o
 gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/alu.c.o
 gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/bit.c.o
-gb-emulator: CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o
+gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o
+gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/misc.c.o
+gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o
+gb-emulator: CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o
 gb-emulator: CMakeFiles/gb-emulator.dir/build.make
 gb-emulator: CMakeFiles/gb-emulator.dir/compiler_depend.ts
 gb-emulator: CMakeFiles/gb-emulator.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable gb-emulator"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/arden/Projects/game-boy-emulator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable gb-emulator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gb-emulator.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

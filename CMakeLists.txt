@@ -11,5 +11,8 @@ add_executable(gb-emulator
   src/ops/ld.c 
   src/ops/alu.c
   src/ops/bit.c
-  src/tests/ld_test.c
+  src/ops/pfx.c
+  src/ops/misc.c
+  src/ops/ctrl.c
+  src/ops/itrpt.c
 )

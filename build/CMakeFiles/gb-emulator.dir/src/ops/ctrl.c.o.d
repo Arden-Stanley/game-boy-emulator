@@ -1,8 +1,8 @@
-CMakeFiles/gb-emulator.dir/src/cpu.c.o: \
- /home/arden/Projects/game-boy-emulator/src/cpu.c \
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o: \
+ /home/arden/Projects/game-boy-emulator/src/ops/ctrl.c \
  /usr/include/stdc-predef.h \
- /home/arden/Projects/game-boy-emulator/src/cpu.h \
- /home/arden/Projects/game-boy-emulator/src/bus.h \
+ /home/arden/Projects/game-boy-emulator/src/ops/ctrl.h \
+ /home/arden/Projects/game-boy-emulator/src/ops/../bus.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -13,6 +13,8 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o: \
  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
  /usr/include/bits/stdint-least.h \
+ /home/arden/Projects/game-boy-emulator/src/ops/../cpu.h \
+ /home/arden/Projects/game-boy-emulator/src/ops/../bus.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
  /usr/include/stdio.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h \
@@ -37,14 +39,4 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o: \
  /usr/include/bits/pthreadtypes-arch.h \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
- /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
- /home/arden/Projects/game-boy-emulator/src/ops/alu.h \
- /home/arden/Projects/game-boy-emulator/src/ops/../cpu.h \
- /home/arden/Projects/game-boy-emulator/src/ops/bit.h \
- /home/arden/Projects/game-boy-emulator/src/ops/../bus.h \
- /home/arden/Projects/game-boy-emulator/src/ops/ctrl.h \
- /home/arden/Projects/game-boy-emulator/src/ops/itrpt.h \
- /home/arden/Projects/game-boy-emulator/src/ops/ld.h \
- /home/arden/Projects/game-boy-emulator/src/ops/misc.h \
- /home/arden/Projects/game-boy-emulator/src/ops/pfx.h \
- /home/arden/Projects/game-boy-emulator/src/ops/bit.h
+ /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h

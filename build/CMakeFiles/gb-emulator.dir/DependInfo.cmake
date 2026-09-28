@@ -13,8 +13,11 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/arden/Projects/game-boy-emulator/src/main.c" "CMakeFiles/gb-emulator.dir/src/main.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/main.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/alu.c" "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/bit.c" "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/ops/ctrl.c" "CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/ops/itrpt.c" "CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/ld.c" "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o.d"
-  "/home/arden/Projects/game-boy-emulator/src/tests/ld_test.c" "CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/ops/misc.c" "CMakeFiles/gb-emulator.dir/src/ops/misc.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/misc.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/ops/pfx.c" "CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o.d"
   "" "gb-emulator" "gcc" "CMakeFiles/gb-emulator.dir/link.d"
   )
 

@@ -5,11 +5,11 @@
 
 uint8_t bus_read8(Bus *bus, uint16_t addr) {
   if (addr < 0x8000) {
-    return bus->rom[addr]; // change later
+    return bus->rom[addr];
   } else if (addr < 0xA000) {
     return bus->vram[addr - 0x8000];
   } else if (addr < 0xC000) {
-    return 0x00; // change later
+    return bus->ext_ram[addr - 0xA000];
   } else if (addr < 0xE000) {
     return bus->wram[addr - 0xC000];
   } else if (addr < 0xFE00) {
@@ -42,6 +42,13 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
     bus->oam[addr - 0xFE00] = data;
   } else if (addr < 0xFF00) {
   } else if (addr < 0xFF80) {
+    if (addr == 0xFF02 && data == 0x81) {
+      char c = bus_read8(bus, 0xFF01);
+      printf("%c", c);
+      fflush(stdout);
+      bus_write(bus, 0xFF02, 0x00);
+    }
+
     bus->io[addr - 0xFF00] = data;
   } else if (addr < 0xFFFF) {
     bus->hram[addr - 0xFF80] = data;
@@ -53,21 +60,21 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
 }
 
 void bus_ld_rom(Bus *bus, const char *path) {
-  FILE *file = fopen(path, "r");
+  FILE *file = fopen(path, "rb");
   if (file == NULL) {
     printf("No file exists: %s", path);
     return;
   }
-  if (fseek(file, 0, SEEK_END) != 0) {
-    fclose(file);
-    return;
-  }
+  fseek(file, 0, SEEK_END);
+
   long size = ftell(file);
-  int temp;
+  char temp;
+  rewind(file);
+
+  printf("Rom Size: %i\n\n", (int)size);
   bus->rom = malloc(size * sizeof(uint8_t));
-  // TODO: finish this
-  int ct = 0;
-  while ((temp = fgetc(file)) != EOF) {
-    bus->rom[ct] = (uint8_t)temp;
-  }
+  bus->ext_ram = malloc(1000 * sizeof(uint8_t));
+  fread(bus->rom, sizeof(uint8_t), size, file);
+
+  fclose(file);
 }

@@ -5,6 +5,7 @@
 #include "ops/itrpt.h"
 #include "ops/ld.h"
 #include "ops/misc.h"
+#include "ops/pfx.h"
 
 void cpu_set_flag(CPU *cpu, Flags flag, bool val) {
   cpu->f = (cpu->f & ~(1 << flag)) | (val << flag);
@@ -47,6 +48,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
       cpu->enable_intrpt = 0;
     }
   }
+
+  // printf("Servicing Opcode: 0x%02X at 0x%04X\n", opcode, cpu->pc);
 
   switch (opcode) {
   case 0x00:
@@ -456,7 +459,7 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
   case 0xCA:
     return op_jp_cc_n16(cpu, bus, CC_Z);
   case 0xCB:
-    // TODO: prefixed
+    return op_pfx_decode(cpu, bus);
   case 0xCC:
     return op_call_cc_n16(cpu, bus, CC_Z);
   case 0xCD:

@@ -249,6 +249,54 @@ src/ops/bit.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/bit.c.s
 .PHONY : src/ops/bit.c.s
 
+src/ops/ctrl.o: src/ops/ctrl.c.o
+.PHONY : src/ops/ctrl.o
+
+# target to build an object file
+src/ops/ctrl.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o
+.PHONY : src/ops/ctrl.c.o
+
+src/ops/ctrl.i: src/ops/ctrl.c.i
+.PHONY : src/ops/ctrl.i
+
+# target to preprocess a source file
+src/ops/ctrl.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.i
+.PHONY : src/ops/ctrl.c.i
+
+src/ops/ctrl.s: src/ops/ctrl.c.s
+.PHONY : src/ops/ctrl.s
+
+# target to generate assembly for a file
+src/ops/ctrl.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.s
+.PHONY : src/ops/ctrl.c.s
+
+src/ops/itrpt.o: src/ops/itrpt.c.o
+.PHONY : src/ops/itrpt.o
+
+# target to build an object file
+src/ops/itrpt.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o
+.PHONY : src/ops/itrpt.c.o
+
+src/ops/itrpt.i: src/ops/itrpt.c.i
+.PHONY : src/ops/itrpt.i
+
+# target to preprocess a source file
+src/ops/itrpt.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.i
+.PHONY : src/ops/itrpt.c.i
+
+src/ops/itrpt.s: src/ops/itrpt.c.s
+.PHONY : src/ops/itrpt.s
+
+# target to generate assembly for a file
+src/ops/itrpt.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.s
+.PHONY : src/ops/itrpt.c.s
+
 src/ops/ld.o: src/ops/ld.c.o
 .PHONY : src/ops/ld.o
 
@@ -273,29 +321,53 @@ src/ops/ld.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/ld.c.s
 .PHONY : src/ops/ld.c.s
 
-src/tests/ld_test.o: src/tests/ld_test.c.o
-.PHONY : src/tests/ld_test.o
+src/ops/misc.o: src/ops/misc.c.o
+.PHONY : src/ops/misc.o
 
 # target to build an object file
-src/tests/ld_test.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o
-.PHONY : src/tests/ld_test.c.o
+src/ops/misc.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/misc.c.o
+.PHONY : src/ops/misc.c.o
 
-src/tests/ld_test.i: src/tests/ld_test.c.i
-.PHONY : src/tests/ld_test.i
+src/ops/misc.i: src/ops/misc.c.i
+.PHONY : src/ops/misc.i
 
 # target to preprocess a source file
-src/tests/ld_test.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.i
-.PHONY : src/tests/ld_test.c.i
+src/ops/misc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/misc.c.i
+.PHONY : src/ops/misc.c.i
 
-src/tests/ld_test.s: src/tests/ld_test.c.s
-.PHONY : src/tests/ld_test.s
+src/ops/misc.s: src/ops/misc.c.s
+.PHONY : src/ops/misc.s
 
 # target to generate assembly for a file
-src/tests/ld_test.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.s
-.PHONY : src/tests/ld_test.c.s
+src/ops/misc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/misc.c.s
+.PHONY : src/ops/misc.c.s
+
+src/ops/pfx.o: src/ops/pfx.c.o
+.PHONY : src/ops/pfx.o
+
+# target to build an object file
+src/ops/pfx.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o
+.PHONY : src/ops/pfx.c.o
+
+src/ops/pfx.i: src/ops/pfx.c.i
+.PHONY : src/ops/pfx.i
+
+# target to preprocess a source file
+src/ops/pfx.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/pfx.c.i
+.PHONY : src/ops/pfx.c.i
+
+src/ops/pfx.s: src/ops/pfx.c.s
+.PHONY : src/ops/pfx.s
+
+# target to generate assembly for a file
+src/ops/pfx.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/pfx.c.s
+.PHONY : src/ops/pfx.c.s
 
 # Help Target
 help:
@@ -321,12 +393,21 @@ help:
 	@echo "... src/ops/bit.o"
 	@echo "... src/ops/bit.i"
 	@echo "... src/ops/bit.s"
+	@echo "... src/ops/ctrl.o"
+	@echo "... src/ops/ctrl.i"
+	@echo "... src/ops/ctrl.s"
+	@echo "... src/ops/itrpt.o"
+	@echo "... src/ops/itrpt.i"
+	@echo "... src/ops/itrpt.s"
 	@echo "... src/ops/ld.o"
 	@echo "... src/ops/ld.i"
 	@echo "... src/ops/ld.s"
-	@echo "... src/tests/ld_test.o"
-	@echo "... src/tests/ld_test.i"
-	@echo "... src/tests/ld_test.s"
+	@echo "... src/ops/misc.o"
+	@echo "... src/ops/misc.i"
+	@echo "... src/ops/misc.s"
+	@echo "... src/ops/pfx.o"
+	@echo "... src/ops/pfx.i"
+	@echo "... src/ops/pfx.s"
 .PHONY : help
 
 

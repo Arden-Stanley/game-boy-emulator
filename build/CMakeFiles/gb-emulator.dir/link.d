@@ -8,7 +8,10 @@ gb-emulator: \
   CMakeFiles/gb-emulator.dir/src/ops/ld.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/alu.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/bit.c.o \
-  CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o \
+  CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o \
+  CMakeFiles/gb-emulator.dir/src/ops/misc.c.o \
+  CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o \
+  CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libgcc.a \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libgcc_s_asneeded.so \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/libgcc_s_asneeded.so \
@@ -59,7 +62,13 @@ CMakeFiles/gb-emulator.dir/src/ops/alu.c.o:
 
 CMakeFiles/gb-emulator.dir/src/ops/bit.c.o:
 
-CMakeFiles/gb-emulator.dir/src/tests/ld_test.c.o:
+CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o:
+
+CMakeFiles/gb-emulator.dir/src/ops/misc.c.o:
+
+CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o:
+
+CMakeFiles/gb-emulator.dir/src/ops/itrpt.c.o:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/libgcc.a:
 
