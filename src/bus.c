@@ -29,6 +29,13 @@ uint8_t bus_read8(Bus *bus, uint16_t addr) {
 }
 
 void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
+  if (addr == 0xFF02 && data == 0x81) {
+    char c = (char)bus_read8(bus, 0xFF01);
+    printf("%c", c);
+    fflush(stdout);
+    bus->io[0xFF02 - 0xFF00] = 0x00;
+  }
+
   if (addr < 0x8000) {
     bus->rom[addr] = data;
   } else if (addr < 0xA000) {
@@ -42,12 +49,6 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
     bus->oam[addr - 0xFE00] = data;
   } else if (addr < 0xFF00) {
   } else if (addr < 0xFF80) {
-    if (addr == 0xFF02 && data == 0x81) {
-      char c = bus_read8(bus, 0xFF01);
-      printf("%c", c);
-      fflush(stdout);
-      bus_write(bus, 0xFF02, 0x00);
-    }
 
     bus->io[addr - 0xFF00] = data;
   } else if (addr < 0xFFFF) {

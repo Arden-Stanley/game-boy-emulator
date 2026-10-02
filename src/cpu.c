@@ -15,7 +15,8 @@ uint8_t cpu_get_imm8(CPU *cpu, Bus *bus) { return bus_read8(bus, cpu->pc++); }
 uint16_t cpu_get_imm16(CPU *cpu, Bus *bus) {
   uint8_t low_byte = bus_read8(bus, cpu->pc++);
   uint8_t high_byte = bus_read8(bus, cpu->pc++);
-  uint16_t data = (low_byte & 0x00FF) | (high_byte << 8);
+  uint16_t data = (uint16_t)low_byte | (uint16_t)(high_byte << 8);
+  printf("Imm16: 0x%X\n", data);
   return data;
 }
 
@@ -49,7 +50,7 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     }
   }
 
-  // printf("Servicing Opcode: 0x%02X at 0x%04X\n", opcode, cpu->pc);
+  printf("Servicing Opcode: 0x%02X at 0x%04X\n", opcode, cpu->pc);
 
   switch (opcode) {
   case 0x00:
