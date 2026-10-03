@@ -40,10 +40,6 @@ uint8_t op_jp_hl(CPU *cpu) {
 
 uint8_t op_jp_n16(CPU *cpu, Bus *bus) {
   uint16_t addr = cpu_get_imm16(cpu, bus);
-  if (addr == cpu->pc) {
-    cpu->running = 0;
-  }
-
   cpu->pc = addr;
 
   return 4;
@@ -74,7 +70,13 @@ uint8_t op_jp_cc_n16(CPU *cpu, Bus *bus, Condition cc) {
 
 uint8_t op_jr_n16(CPU *cpu, Bus *bus) {
   int8_t offset = cpu_get_imm8(cpu, bus);
-  cpu->pc = (uint16_t)((uint16_t)cpu->pc + offset);
+  uint16_t last_pc = cpu->pc;
+  cpu->pc = cpu->pc + offset;
+  /*
+  if (last_pc == cpu->pc) {
+    cpu->running = 0;
+  }
+  */
   return 3;
 }
 
@@ -102,10 +104,8 @@ uint8_t op_jr_cc_n16(CPU *cpu, Bus *bus, Condition cc) {
 }
 
 uint8_t op_ret(CPU *cpu, Bus *bus) {
-  uint8_t low_byte = bus_read8(bus, cpu->sp);
-  cpu->sp++;
-  uint8_t high_byte = bus_read8(bus, cpu->sp);
-  cpu->sp++;
+  uint8_t low_byte = bus_read8(bus, cpu->sp++);
+  uint8_t high_byte = bus_read8(bus, cpu->sp++);
   cpu->pc = ((high_byte << 8) | (low_byte & 0x00FF));
   return 4;
 }

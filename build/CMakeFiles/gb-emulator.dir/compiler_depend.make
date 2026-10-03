@@ -202,10 +202,13 @@ CMakeFiles/gb-emulator.dir/src/main.c.o: /home/arden/Projects/game-boy-emulator/
   /usr/include/features.h \
   /usr/include/gnu/stubs-64.h \
   /usr/include/gnu/stubs.h \
+  /usr/include/memory.h \
   /usr/include/stdc-predef.h \
   /usr/include/stdint.h \
   /usr/include/stdio.h \
   /usr/include/stdlib.h \
+  /usr/include/string.h \
+  /usr/include/strings.h \
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
@@ -748,6 +751,10 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 
 /usr/include/unistd.h:
 
+/usr/include/strings.h:
+
+/usr/include/memory.h:
+
 /usr/include/bits/unistd_ext.h:
 
 /usr/include/bits/types/locale_t.h:
@@ -785,6 +792,8 @@ CMakeFiles/gb-emulator.dir/src/bus.c.o:
 /usr/include/sys/cdefs.h:
 
 CMakeFiles/gb-emulator.dir/src/cpu.c.o:
+
+/usr/include/string.h:
 
 /usr/include/bits/time64.h:
 

@@ -4,6 +4,8 @@ uint8_t op_and_a_r8(CPU *cpu, uint8_t val) {
   cpu->a = cpu->a & val;
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 1);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -14,6 +16,8 @@ uint8_t op_and_a_mhl(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a & bus_read8(bus, cpu->hl);
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 1);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -24,6 +28,8 @@ uint8_t op_and_a_n8(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a & cpu_get_imm8(cpu, bus);
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 1);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -41,6 +47,8 @@ uint8_t op_or_a_r8(CPU *cpu, uint8_t val) {
   cpu->a = cpu->a | val;
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -51,6 +59,8 @@ uint8_t op_or_a_mhl(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a | bus_read8(bus, cpu->hl);
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -61,6 +71,8 @@ uint8_t op_or_a_n8(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a | cpu_get_imm8(cpu, bus);
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -71,6 +83,8 @@ uint8_t op_xor_a_r8(CPU *cpu, uint8_t val) {
   cpu->a = cpu->a ^ val;
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -82,6 +96,8 @@ uint8_t op_xor_a_mhl(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a ^ val;
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -93,6 +109,8 @@ uint8_t op_xor_a_n8(CPU *cpu, Bus *bus) {
   cpu->a = cpu->a ^ val;
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -104,6 +122,8 @@ uint8_t op_bit_u3_r8(CPU *cpu, uint8_t idx, uint8_t val) {
   uint8_t test = val & (1 << idx);
   if (test == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 1);
   return 2;
@@ -115,6 +135,8 @@ uint8_t op_bit_u3_mhl(CPU *cpu, Bus *bus, uint8_t idx) {
   uint8_t test = val & (1 << idx);
   if (test == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 1);
   return 3;
@@ -155,6 +177,8 @@ uint8_t op_rl_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) | carry;
   if ((*reg) == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -168,6 +192,8 @@ uint8_t op_rl_mhl(CPU *cpu, Bus *bus) {
   val = (val) | carry;
   if ((val) == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -192,6 +218,8 @@ uint8_t op_rlc_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) | carry;
   if ((*reg) == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -205,6 +233,8 @@ uint8_t op_rlc_mhl(CPU *cpu, Bus *bus) {
   val = val | carry;
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 4;
@@ -228,6 +258,8 @@ uint8_t op_rr_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) | (carry << 7);
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -241,6 +273,8 @@ uint8_t op_rr_mhl(CPU *cpu, Bus *bus) {
   val = val | (carry << 7);
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -265,6 +299,8 @@ uint8_t op_rrc_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) | (carry << 7);
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -278,6 +314,8 @@ uint8_t op_rrc_mhl(CPU *cpu, Bus *bus) {
   val = val | (carry << 7);
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -300,6 +338,8 @@ uint8_t op_sla_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) << 1;
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -311,6 +351,8 @@ uint8_t op_sla_mhl(CPU *cpu, Bus *bus) {
   val = val << 1;
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -322,6 +364,8 @@ uint8_t op_sra_r8(CPU *cpu, uint8_t *reg) {
   *reg = ((*reg) >> 1) | ((*reg) & 0x80);
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -333,6 +377,8 @@ uint8_t op_sra_mhl(CPU *cpu, Bus *bus) {
   val = (val >> 1) | (val & 0x80);
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -344,6 +390,8 @@ uint8_t op_srl_r8(CPU *cpu, uint8_t *reg) {
   *reg = (*reg) >> 1;
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 2;
@@ -355,6 +403,8 @@ uint8_t op_srl_mhl(CPU *cpu, Bus *bus) {
   val = val >> 1;
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   bus_write(bus, cpu->hl, val);
@@ -368,6 +418,8 @@ uint8_t op_swap_r8(CPU *cpu, uint8_t *reg) {
   *reg = new_byte;
   if (*reg == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
@@ -382,6 +434,8 @@ uint8_t op_swap_mhl(CPU *cpu, Bus *bus) {
   val = new_byte;
   if (val == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   cpu_set_flag(cpu, FLAG_C, 0);
