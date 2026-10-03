@@ -41,6 +41,7 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
   } else if (addr < 0xA000) {
     bus->vram[addr - 0x8000] = data;
   } else if (addr < 0xC000) {
+    bus->ext_ram[addr - 0xA000] = data;
   } else if (addr < 0xE000) {
     bus->wram[addr - 0xC000] = data;
   } else if (addr < 0xFE00) {
@@ -74,7 +75,7 @@ void bus_ld_rom(Bus *bus, const char *path) {
 
   printf("Rom Size: %i\n\n", (int)size);
   bus->rom = malloc(size * sizeof(uint8_t));
-  bus->ext_ram = malloc(1000 * sizeof(uint8_t));
+  bus->ext_ram = malloc(0x1FFF * sizeof(uint8_t));
   fread(bus->rom, sizeof(uint8_t), size, file);
 
   fclose(file);

@@ -166,6 +166,7 @@ CMakeFiles/gb-emulator.dir/src/main.c.o: /home/arden/Projects/game-boy-emulator/
   /usr/include/bits/struct_mutex.h \
   /usr/include/bits/struct_rwlock.h \
   /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time.h \
   /usr/include/bits/time64.h \
   /usr/include/bits/timesize.h \
   /usr/include/bits/types.h \
@@ -173,16 +174,20 @@ CMakeFiles/gb-emulator.dir/src/main.c.o: /home/arden/Projects/game-boy-emulator/
   /usr/include/bits/types/__FILE.h \
   /usr/include/bits/types/__fpos64_t.h \
   /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__locale_t.h \
   /usr/include/bits/types/__mbstate_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/bits/types/clock_t.h \
   /usr/include/bits/types/clockid_t.h \
   /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/locale_t.h \
   /usr/include/bits/types/once_flag.h \
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_itimerspec.h \
   /usr/include/bits/types/struct_timespec.h \
   /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_tm.h \
   /usr/include/bits/types/time_t.h \
   /usr/include/bits/types/timer_t.h \
   /usr/include/bits/typesizes.h \
@@ -204,6 +209,7 @@ CMakeFiles/gb-emulator.dir/src/main.c.o: /home/arden/Projects/game-boy-emulator/
   /usr/include/sys/cdefs.h \
   /usr/include/sys/select.h \
   /usr/include/sys/types.h \
+  /usr/include/time.h \
   /usr/include/unistd.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
@@ -744,6 +750,10 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 
 /usr/include/bits/unistd_ext.h:
 
+/usr/include/bits/types/locale_t.h:
+
+/usr/include/bits/time.h:
+
 /usr/include/bits/posix_opt.h:
 
 /usr/include/bits/confname.h:
@@ -754,7 +764,11 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 
 /home/arden/Projects/game-boy-emulator/src/ops/misc.h:
 
+/usr/include/bits/types/__locale_t.h:
+
 /home/arden/Projects/game-boy-emulator/src/ops/alu.h:
+
+/usr/include/time.h:
 
 /home/arden/Projects/game-boy-emulator/src/cpu.c:
 
@@ -777,6 +791,8 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o:
 /usr/include/bits/byteswap.h:
 
 /usr/include/bits/thread-shared-types.h:
+
+/usr/include/bits/types/struct_tm.h:
 
 /usr/include/bits/wchar.h:
 
@@ -921,5 +937,7 @@ CMakeFiles/gb-emulator.dir/src/ops/ctrl.c.o:
 /usr/include/bits/types/timer_t.h:
 
 /usr/include/stdio.h:
+
+/usr/include/bits/types/struct_itimerspec.h:
 
 /usr/include/sys/types.h:
