@@ -72,11 +72,6 @@ uint8_t op_jr_n16(CPU *cpu, Bus *bus) {
   int8_t offset = cpu_get_imm8(cpu, bus);
   uint16_t last_pc = cpu->pc;
   cpu->pc = cpu->pc + offset;
-  /*
-  if (last_pc == cpu->pc) {
-    cpu->running = 0;
-  }
-  */
   return 3;
 }
 
@@ -152,7 +147,6 @@ uint8_t op_pop_af(CPU *cpu, Bus *bus) {
   cpu->sp++;
   cpu->a = bus_read8(bus, cpu->sp);
   cpu->sp++;
-
   return 3;
 }
 

@@ -30,9 +30,9 @@ uint8_t bus_read8(Bus *bus, uint16_t addr) {
 
 void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
   if (addr == 0xFF02 && data == 0x81) {
-    char c = bus_read8(bus, 0xFF01);
+    char c = 0x7F & bus_read8(bus, 0xFF01);
     printf("%c", c);
-    bus->io[0xFF02 - 0xFF00] = 0x00;
+    bus_write(bus, 0xFF02, 0x00);
   }
 
   if (addr < 0x8000) {

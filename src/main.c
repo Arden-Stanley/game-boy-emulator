@@ -5,7 +5,7 @@
 #include <time.h>
 #include <unistd.h>
 
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
   CPU cpu;
   Bus bus;
   memset(&bus, 0, sizeof(bus));
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
   cpu.halt_bug = 0;
   cpu.running = 1;
 
-  bus_ld_rom(&bus, "../test_roms/09-op r,r.gb");
+  bus_ld_rom(&bus, "../test_roms/10-bit ops.gb");
 
   while (cpu.running) {
     cpu_step(&cpu, &bus);
