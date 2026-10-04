@@ -94,18 +94,23 @@ uint8_t op_ld_mn16_sp(CPU *cpu, Bus *bus) {
   return 5;
 }
 uint8_t op_ld_hl_spe8(CPU *cpu, Bus *bus) {
-  int8_t offset = (int8_t)cpu_get_imm8(cpu, bus);
-  uint16_t val = cpu->sp + (int8_t)offset;
+  int8_t offset = cpu_get_imm8(cpu, bus);
+  uint16_t val = cpu->sp + offset;
   cpu->hl = val;
   cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
+  uint8_t u_offset = (uint8_t)offset;
 
-  if ((((uint8_t)offset & 0x0F) + (cpu->sp & 0x0F)) > 0x0F)
+  if (((u_offset & 0x0F) + (cpu->sp & 0x0F)) > 0x0F)
     cpu_set_flag(cpu, FLAG_H, 1);
+  else
+    cpu_set_flag(cpu, FLAG_H, 0);
 
-  uint16_t temp = ((uint8_t)offset + cpu->sp);
+  uint16_t temp = (u_offset + (cpu->sp & 0x00FF));
   if (temp > 0x00FF)
     cpu_set_flag(cpu, FLAG_C, 1);
+  else
+    cpu_set_flag(cpu, FLAG_C, 0);
 
   return 3;
 }

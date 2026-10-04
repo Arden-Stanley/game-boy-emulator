@@ -116,12 +116,6 @@ uint8_t op_add_a_mhl(CPU *cpu, Bus *bus) {
 
 uint8_t op_add_a_n8(CPU *cpu, Bus *bus) {
   uint8_t val = cpu_get_imm8(cpu, bus);
-  cpu->a = cpu->a + val;
-  if (cpu->a == 0)
-    cpu_set_flag(cpu, FLAG_Z, 1);
-  else
-    cpu_set_flag(cpu, FLAG_Z, 0);
-
   cpu_set_flag(cpu, FLAG_N, 0);
 
   if ((cpu->a & 0x0F) + (val & 0x0F) > 0x0F)
@@ -134,6 +128,12 @@ uint8_t op_add_a_n8(CPU *cpu, Bus *bus) {
     cpu_set_flag(cpu, FLAG_C, 1);
   else
     cpu_set_flag(cpu, FLAG_C, 0);
+
+  cpu->a = cpu->a + val;
+  if (cpu->a == 0)
+    cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
 
   return 2;
 }
@@ -156,7 +156,6 @@ uint8_t op_add_hl_r16(CPU *cpu, uint16_t val) {
 }
 
 uint8_t op_add_hl_sp(CPU *cpu) {
-  cpu->hl = cpu->hl + cpu->sp;
   cpu_set_flag(cpu, FLAG_N, 0);
 
   if ((cpu->hl & 0x0FFF) + (cpu->sp & 0x0FFF) > 0x0FFF)
@@ -170,12 +169,12 @@ uint8_t op_add_hl_sp(CPU *cpu) {
   else
     cpu_set_flag(cpu, FLAG_C, 0);
 
+  cpu->hl = cpu->hl + cpu->sp;
   return 2;
 }
 
 uint8_t op_add_sp_e8(CPU *cpu, Bus *bus) {
   int8_t val = (int8_t)cpu_get_imm8(cpu, bus);
-  cpu->sp = cpu->sp + val;
   cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
 
@@ -184,12 +183,13 @@ uint8_t op_add_sp_e8(CPU *cpu, Bus *bus) {
   else
     cpu_set_flag(cpu, FLAG_H, 0);
 
-  uint16_t sum = cpu->sp + (uint8_t)val;
+  uint16_t sum = (cpu->sp & 0xFF) + (uint8_t)val;
   if (sum > 0xFF)
     cpu_set_flag(cpu, FLAG_C, 1);
   else
     cpu_set_flag(cpu, FLAG_C, 0);
 
+  cpu->sp = cpu->sp + val;
   return 4;
 }
 

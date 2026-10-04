@@ -1,6 +1,5 @@
 #include "misc.h"
 
-// TODO: implement misc functions
 uint8_t op_daa(CPU *cpu) {
   uint8_t adj = 0;
   if (cpu_get_flag(cpu, FLAG_N)) {
@@ -23,8 +22,13 @@ uint8_t op_daa(CPU *cpu) {
   }
   if (cpu->a == 0)
     cpu_set_flag(cpu, FLAG_Z, 1);
+  else
+    cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
   return 1;
 }
 
-uint8_t op_stop(CPU *cpu) { cpu->pc += 1; }
+uint8_t op_stop(CPU *cpu) {
+  cpu->pc += 1;
+  return 0;
+}

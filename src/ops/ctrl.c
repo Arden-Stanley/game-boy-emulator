@@ -143,10 +143,8 @@ uint8_t op_rst_vec(CPU *cpu, Bus *bus, uint8_t vec) {
 }
 
 uint8_t op_pop_af(CPU *cpu, Bus *bus) {
-  cpu->f = bus_read8(bus, cpu->sp);
-  cpu->sp++;
-  cpu->a = bus_read8(bus, cpu->sp);
-  cpu->sp++;
+  cpu->f = bus_read8(bus, cpu->sp++) & 0xF0;
+  cpu->a = bus_read8(bus, cpu->sp++);
   return 3;
 }
 

@@ -40,14 +40,11 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     opcode = bus_read8(bus, cpu->pc++);
   }
 
-  if (cpu->enable_intrpt) {
-    if (cpu->enable_intrpt == 1) {
-      cpu->enable_intrpt++;
-    } else if (cpu->enable_intrpt == 2) {
-      cpu->enable_intrpt = 0;
-      cpu->ime = 1;
-      cpu->enable_intrpt = 0;
-    }
+  if (cpu->enable_intrpt == 1) {
+    cpu->enable_intrpt++;
+  } else if (cpu->enable_intrpt == 2) {
+    cpu->enable_intrpt = 0;
+    cpu->ime = 1;
   }
 
   // printf("Servicing Opcode: 0x%02X at PC: 0x%04X\n", opcode, cpu->pc - 1);

@@ -45,7 +45,7 @@ typedef struct {
   bool running;
 } CPU;
 
-typedef enum { FLAG_Z = 0, FLAG_N = 1, FLAG_H = 2, FLAG_C = 3 } Flags;
+typedef enum { FLAG_Z = 7, FLAG_N = 6, FLAG_H = 5, FLAG_C = 4 } Flags;
 
 void cpu_set_flag(CPU *cpu, Flags flag, bool val);
 uint8_t cpu_get_flag(CPU *cpu, Flags flag);
