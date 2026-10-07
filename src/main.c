@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
   cpu.halt_bug = 0;
   cpu.running = 1;
 
-  bus_ld_rom(&bus, "../test_roms/04-op r,imm.gb");
+  bus_ld_rom(&bus, argv[1]);
 
   while (cpu.running) {
     cpu_step(&cpu, &bus);

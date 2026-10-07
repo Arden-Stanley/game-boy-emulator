@@ -242,6 +242,7 @@ uint8_t op_rlc_mhl(CPU *cpu, Bus *bus) {
     cpu_set_flag(cpu, FLAG_Z, 0);
   cpu_set_flag(cpu, FLAG_N, 0);
   cpu_set_flag(cpu, FLAG_H, 0);
+  bus_write(bus, cpu->hl, val);
   return 4;
 }
 

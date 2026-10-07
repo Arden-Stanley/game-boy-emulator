@@ -18,7 +18,7 @@ uint8_t op_pfx_decode(CPU *cpu, Bus *bus) {
   case 0x06:
     return op_rlc_mhl(cpu, bus);
   case 0x07:
-    return op_rlca(cpu);
+    return op_rlc_r8(cpu, &cpu->a);
   case 0x08:
     return op_rrc_r8(cpu, &cpu->b);
   case 0x09:
@@ -34,7 +34,7 @@ uint8_t op_pfx_decode(CPU *cpu, Bus *bus) {
   case 0x0E:
     return op_rrc_mhl(cpu, bus);
   case 0x0F:
-    return op_rrca(cpu);
+    return op_rrc_r8(cpu, &cpu->a);
   case 0x10:
     return op_rl_r8(cpu, &cpu->b);
   case 0x11:
@@ -50,7 +50,7 @@ uint8_t op_pfx_decode(CPU *cpu, Bus *bus) {
   case 0x16:
     return op_rl_mhl(cpu, bus);
   case 0x17:
-    return op_rla(cpu);
+    return op_rl_r8(cpu, &cpu->a);
   case 0x18:
     return op_rr_r8(cpu, &cpu->b);
   case 0x19:
@@ -66,7 +66,7 @@ uint8_t op_pfx_decode(CPU *cpu, Bus *bus) {
   case 0x1E:
     return op_rr_mhl(cpu, bus);
   case 0x1F:
-    return op_rra(cpu);
+    return op_rr_r8(cpu, &cpu->a);
   case 0x20:
     return op_sla_r8(cpu, &cpu->b);
   case 0x21:
