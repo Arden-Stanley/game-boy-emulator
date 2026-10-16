@@ -67,6 +67,7 @@ CMakeFiles/gb-emulator.dir/src/bus.c.o: /home/arden/Projects/game-boy-emulator/s
 CMakeFiles/gb-emulator.dir/src/cpu.c.o: /home/arden/Projects/game-boy-emulator/src/cpu.c \
   /home/arden/Projects/game-boy-emulator/src/bus.h \
   /home/arden/Projects/game-boy-emulator/src/cpu.h \
+  /home/arden/Projects/game-boy-emulator/src/interrupt.h \
   /home/arden/Projects/game-boy-emulator/src/bus.h \
   /home/arden/Projects/game-boy-emulator/src/cpu.h \
   /home/arden/Projects/game-boy-emulator/src/ops/alu.h \
@@ -76,6 +77,72 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o: /home/arden/Projects/game-boy-emulator/s
   /home/arden/Projects/game-boy-emulator/src/ops/ld.h \
   /home/arden/Projects/game-boy-emulator/src/ops/misc.h \
   /home/arden/Projects/game-boy-emulator/src/ops/pfx.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/atomic_wide_counter.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/endianness.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-least.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/bits/struct_mutex.h \
+  /usr/include/bits/struct_rwlock.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/time64.h \
+  /usr/include/bits/timesize.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/types/once_flag.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/endian.h \
+  /usr/include/features-time64.h \
+  /usr/include/features.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/stdc-predef.h \
+  /usr/include/stdint.h \
+  /usr/include/stdio.h \
+  /usr/include/stdlib.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/sys/select.h \
+  /usr/include/sys/types.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdarg.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdbool.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h \
+  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h
+
+CMakeFiles/gb-emulator.dir/src/interrupt.c.o: /home/arden/Projects/game-boy-emulator/src/interrupt.c \
+  /home/arden/Projects/game-boy-emulator/src/bus.h \
+  /home/arden/Projects/game-boy-emulator/src/cpu.h \
+  /home/arden/Projects/game-boy-emulator/src/interrupt.h \
   /usr/include/alloca.h \
   /usr/include/bits/atomic_wide_counter.h \
   /usr/include/bits/byteswap.h \
@@ -699,6 +766,7 @@ gb-emulator: /usr/lib/Scrt1.o \
   /usr/lib/libc_nonshared.a \
   CMakeFiles/gb-emulator.dir/src/bus.c.o \
   CMakeFiles/gb-emulator.dir/src/cpu.c.o \
+  CMakeFiles/gb-emulator.dir/src/interrupt.c.o \
   CMakeFiles/gb-emulator.dir/src/main.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/alu.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/bit.c.o \
@@ -730,8 +798,6 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o:
 
 /usr/lib/libgcc_s.so.1:
-
-/usr/lib/libc.so:
 
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/libatomic_asneeded.so:
 
@@ -775,6 +841,10 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 
 /home/arden/Projects/game-boy-emulator/src/ops/alu.h:
 
+/usr/lib/libc.so:
+
+/home/arden/Projects/game-boy-emulator/src/interrupt.h:
+
 /usr/include/time.h:
 
 /home/arden/Projects/game-boy-emulator/src/cpu.c:
@@ -816,6 +886,8 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o:
 /usr/include/bits/select.h:
 
 CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o:
+
+CMakeFiles/gb-emulator.dir/src/interrupt.c.o:
 
 /usr/include/features-time64.h:
 
@@ -892,6 +964,8 @@ CMakeFiles/gb-emulator.dir/src/ops/alu.c.o:
 /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stddef.h:
 
 /usr/include/bits/types/__mbstate_t.h:
+
+/home/arden/Projects/game-boy-emulator/src/interrupt.c:
 
 /usr/include/bits/types/clock_t.h:
 

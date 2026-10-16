@@ -5,6 +5,7 @@ gb-emulator: \
   CMakeFiles/gb-emulator.dir/src/main.c.o \
   CMakeFiles/gb-emulator.dir/src/bus.c.o \
   CMakeFiles/gb-emulator.dir/src/cpu.c.o \
+  CMakeFiles/gb-emulator.dir/src/interrupt.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/ld.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/alu.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/bit.c.o \
@@ -55,6 +56,8 @@ CMakeFiles/gb-emulator.dir/src/main.c.o:
 CMakeFiles/gb-emulator.dir/src/bus.c.o:
 
 CMakeFiles/gb-emulator.dir/src/cpu.c.o:
+
+CMakeFiles/gb-emulator.dir/src/interrupt.c.o:
 
 CMakeFiles/gb-emulator.dir/src/ops/ld.c.o:
 

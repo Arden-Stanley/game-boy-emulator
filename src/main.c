@@ -1,7 +1,7 @@
 #include "bus.h"
 #include "cpu.h"
 #include <memory.h>
-#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 #include <unistd.h>
 
@@ -25,10 +25,12 @@ int main(int argc, char *argv[]) {
   cpu.sp = 0xFFFE;
   cpu.halt_bug = 0;
   cpu.running = 1;
+  cpu.ime = 0;
 
   bus_ld_rom(&bus, argv[1]);
 
   while (cpu.running) {
+
     cpu_step(&cpu, &bus);
   }
   free(bus.rom);

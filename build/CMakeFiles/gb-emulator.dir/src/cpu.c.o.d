@@ -38,6 +38,7 @@ CMakeFiles/gb-emulator.dir/src/cpu.c.o: \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
+ /home/arden/Projects/game-boy-emulator/src/interrupt.h \
  /home/arden/Projects/game-boy-emulator/src/ops/alu.h \
  /home/arden/Projects/game-boy-emulator/src/ops/../cpu.h \
  /home/arden/Projects/game-boy-emulator/src/ops/bit.h \

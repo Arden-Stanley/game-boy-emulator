@@ -19,6 +19,12 @@
 },
 {
   "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/interrupt.c.o -c /home/arden/Projects/game-boy-emulator/src/interrupt.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/interrupt.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/interrupt.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
   "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/ops/ld.c.o -c /home/arden/Projects/game-boy-emulator/src/ops/ld.c",
   "file": "/home/arden/Projects/game-boy-emulator/src/ops/ld.c",
   "output": "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o"

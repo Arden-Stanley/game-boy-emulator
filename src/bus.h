@@ -3,8 +3,8 @@
 
 #include <stdint.h>
 
-#define IF 0xFF0F
-#define IE 0xFFFF
+#define MEM_IF 0xFF0F
+#define MEM_IE 0xFFFF
 
 typedef struct {
   uint8_t *rom;

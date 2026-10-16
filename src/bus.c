@@ -52,7 +52,7 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
     bus->io[addr - 0xFF00] = data;
   } else if (addr < 0xFFFF) {
     bus->hram[addr - 0xFF80] = data;
-  } else if (addr == IE) {
+  } else if (addr == MEM_IE) {
     bus->ie = data;
   } else {
     printf("Memory Address Out of Bounds: %X", addr);

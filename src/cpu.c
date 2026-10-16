@@ -1,4 +1,5 @@
 #include "cpu.h"
+#include "interrupt.h"
 #include "ops/alu.h"
 #include "ops/bit.h"
 #include "ops/ctrl.h"
@@ -21,11 +22,24 @@ uint16_t cpu_get_imm16(CPU *cpu, Bus *bus) {
 }
 
 uint8_t cpu_step(CPU *cpu, Bus *bus) {
+
+  if (cpu->enable_intrpt == 1) {
+    cpu->enable_intrpt++;
+    // printf("Waiting to enable.\n");
+  } else if (cpu->enable_intrpt == 2) {
+    cpu->enable_intrpt = 0;
+    cpu->ime = 1;
+    // printf("IME Enabled.\n");
+  }
+
   if (cpu->stopped) {
     return 0;
   }
+
+  interrupt_poll(cpu, bus);
+
   if (cpu->halted) {
-    if (bus_read8(bus, IF) & bus_read8(bus, IE)) {
+    if (bus_read8(bus, MEM_IF) & bus_read8(bus, MEM_IE)) {
       cpu->halted = 0;
       return 0;
     }
@@ -40,14 +54,8 @@ uint8_t cpu_step(CPU *cpu, Bus *bus) {
     opcode = bus_read8(bus, cpu->pc++);
   }
 
-  if (cpu->enable_intrpt == 1) {
-    cpu->enable_intrpt++;
-  } else if (cpu->enable_intrpt == 2) {
-    cpu->enable_intrpt = 0;
-    cpu->ime = 1;
-  }
-
-  // printf("Servicing Opcode: 0x%02X at PC: 0x%04X\n", opcode, cpu->pc - 1);
+  // printf("Opcode: 0x%02X\n", opcode);
+  //  printf("Servicing Opcode: 0x%02X at PC: 0x%04X\n", opcode, cpu->pc - 1);
 
   switch (opcode) {
   case 0x00:
