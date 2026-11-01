@@ -49,6 +49,9 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
     bus->oam[addr - 0xFE00] = data;
   } else if (addr < 0xFF00) {
   } else if (addr < 0xFF80) {
+    if (addr == 0xFF04) {
+      bus->io[0x0004] = 0x00;
+    }
     bus->io[addr - 0xFF00] = data;
   } else if (addr < 0xFFFF) {
     bus->hram[addr - 0xFF80] = data;

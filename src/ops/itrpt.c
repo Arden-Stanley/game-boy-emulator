@@ -13,7 +13,7 @@ uint8_t op_ei(CPU *cpu) {
 }
 
 uint8_t op_halt(CPU *cpu, Bus *bus) {
-  if (cpu->ime == 1) {
+  if (cpu->ime) {
     cpu->halted = 1;
   } else if ((bus_read8(bus, MEM_IF) & bus_read8(bus, MEM_IE)) != 0) {
     cpu->halt_bug = 1;

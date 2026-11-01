@@ -30,7 +30,6 @@ int main(int argc, char *argv[]) {
   bus_ld_rom(&bus, argv[1]);
 
   while (cpu.running) {
-
     cpu_step(&cpu, &bus);
   }
   free(bus.rom);

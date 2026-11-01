@@ -3,6 +3,10 @@
 
 #include <stdint.h>
 
+#define MEM_DIV 0xFF04
+#define MEM_TIMA 0xFF05
+#define MEM_TMA 0xFF06
+#define MEM_TAC 0xFF07
 #define MEM_IF 0xFF0F
 #define MEM_IE 0xFFFF
 
