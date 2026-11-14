@@ -10,7 +10,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/arden/Projects/game-boy-emulator/src/bus.c" "CMakeFiles/gb-emulator.dir/src/bus.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/bus.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/cpu.c" "CMakeFiles/gb-emulator.dir/src/cpu.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/cpu.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/gameboy.c" "CMakeFiles/gb-emulator.dir/src/gameboy.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/gameboy.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/interrupt.c" "CMakeFiles/gb-emulator.dir/src/interrupt.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/interrupt.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/logger.c" "CMakeFiles/gb-emulator.dir/src/logger.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/logger.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/main.c" "CMakeFiles/gb-emulator.dir/src/main.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/main.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/alu.c" "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/alu.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/bit.c" "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/bit.c.o.d"
@@ -19,6 +21,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/arden/Projects/game-boy-emulator/src/ops/ld.c" "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/ld.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/misc.c" "CMakeFiles/gb-emulator.dir/src/ops/misc.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/misc.c.o.d"
   "/home/arden/Projects/game-boy-emulator/src/ops/pfx.c" "CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/ops/pfx.c.o.d"
+  "/home/arden/Projects/game-boy-emulator/src/timer.c" "CMakeFiles/gb-emulator.dir/src/timer.c.o" "gcc" "CMakeFiles/gb-emulator.dir/src/timer.c.o.d"
   "" "gb-emulator" "gcc" "CMakeFiles/gb-emulator.dir/link.d"
   )
 

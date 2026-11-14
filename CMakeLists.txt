@@ -6,9 +6,12 @@ project(gb-emulator)
 
 add_executable(gb-emulator 
   src/main.c 
+  src/gameboy.c
   src/bus.c 
   src/cpu.c 
   src/interrupt.c
+  src/timer.c
+  src/logger.c
   src/ops/ld.c 
   src/ops/alu.c
   src/ops/bit.c

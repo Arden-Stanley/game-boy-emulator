@@ -1,6 +1,7 @@
 CMakeFiles/gb-emulator.dir/src/main.c.o: \
  /home/arden/Projects/game-boy-emulator/src/main.c \
  /usr/include/stdc-predef.h \
+ /home/arden/Projects/game-boy-emulator/src/gameboy.h \
  /home/arden/Projects/game-boy-emulator/src/bus.h \
  /usr/lib/gcc/x86_64-pc-linux-gnu/16/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
@@ -38,11 +39,5 @@ CMakeFiles/gb-emulator.dir/src/main.c.o: \
  /usr/include/bits/atomic_wide_counter.h /usr/include/bits/struct_mutex.h \
  /usr/include/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/bits/types/once_flag.h /usr/include/bits/stdlib-float.h \
- /usr/include/memory.h /usr/include/string.h \
- /usr/include/bits/types/locale_t.h /usr/include/bits/types/__locale_t.h \
- /usr/include/strings.h /usr/include/time.h /usr/include/bits/time.h \
- /usr/include/bits/types/struct_tm.h \
- /usr/include/bits/types/struct_itimerspec.h /usr/include/unistd.h \
- /usr/include/bits/posix_opt.h /usr/include/bits/environments.h \
- /usr/include/bits/confname.h /usr/include/bits/getopt_posix.h \
- /usr/include/bits/getopt_core.h /usr/include/bits/unistd_ext.h
+ /home/arden/Projects/game-boy-emulator/src/logger.h \
+ /home/arden/Projects/game-boy-emulator/src/timer.h

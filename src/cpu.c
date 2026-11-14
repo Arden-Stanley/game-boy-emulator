@@ -8,6 +8,22 @@
 #include "ops/misc.h"
 #include "ops/pfx.h"
 
+void cpu_init(CPU *cpu) {
+  cpu->a = 0x01;
+  cpu->f = 0x08;
+  cpu->b = 0xFF;
+  cpu->c = 0x13;
+  cpu->d = 0x00;
+  cpu->e = 0xD8;
+  cpu->h = 0x01;
+  cpu->l = 0x4D;
+  cpu->pc = 0x0100;
+  cpu->sp = 0xFFFE;
+  cpu->halt_bug = 0;
+  cpu->running = 1;
+  cpu->ime = 0;
+}
+
 void cpu_set_flag(CPU *cpu, Flags flag, bool val) {
   cpu->f = (cpu->f & ~(1 << flag)) | (val << flag);
 }

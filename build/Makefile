@@ -177,6 +177,30 @@ src/cpu.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/cpu.c.s
 .PHONY : src/cpu.c.s
 
+src/gameboy.o: src/gameboy.c.o
+.PHONY : src/gameboy.o
+
+# target to build an object file
+src/gameboy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/gameboy.c.o
+.PHONY : src/gameboy.c.o
+
+src/gameboy.i: src/gameboy.c.i
+.PHONY : src/gameboy.i
+
+# target to preprocess a source file
+src/gameboy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/gameboy.c.i
+.PHONY : src/gameboy.c.i
+
+src/gameboy.s: src/gameboy.c.s
+.PHONY : src/gameboy.s
+
+# target to generate assembly for a file
+src/gameboy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/gameboy.c.s
+.PHONY : src/gameboy.c.s
+
 src/interrupt.o: src/interrupt.c.o
 .PHONY : src/interrupt.o
 
@@ -200,6 +224,30 @@ src/interrupt.s: src/interrupt.c.s
 src/interrupt.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/interrupt.c.s
 .PHONY : src/interrupt.c.s
+
+src/logger.o: src/logger.c.o
+.PHONY : src/logger.o
+
+# target to build an object file
+src/logger.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/logger.c.o
+.PHONY : src/logger.c.o
+
+src/logger.i: src/logger.c.i
+.PHONY : src/logger.i
+
+# target to preprocess a source file
+src/logger.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/logger.c.i
+.PHONY : src/logger.c.i
+
+src/logger.s: src/logger.c.s
+.PHONY : src/logger.s
+
+# target to generate assembly for a file
+src/logger.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/logger.c.s
+.PHONY : src/logger.c.s
 
 src/main.o: src/main.c.o
 .PHONY : src/main.o
@@ -393,6 +441,30 @@ src/ops/pfx.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/ops/pfx.c.s
 .PHONY : src/ops/pfx.c.s
 
+src/timer.o: src/timer.c.o
+.PHONY : src/timer.o
+
+# target to build an object file
+src/timer.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/timer.c.o
+.PHONY : src/timer.c.o
+
+src/timer.i: src/timer.c.i
+.PHONY : src/timer.i
+
+# target to preprocess a source file
+src/timer.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/timer.c.i
+.PHONY : src/timer.c.i
+
+src/timer.s: src/timer.c.s
+.PHONY : src/timer.s
+
+# target to generate assembly for a file
+src/timer.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gb-emulator.dir/build.make CMakeFiles/gb-emulator.dir/src/timer.c.s
+.PHONY : src/timer.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -408,9 +480,15 @@ help:
 	@echo "... src/cpu.o"
 	@echo "... src/cpu.i"
 	@echo "... src/cpu.s"
+	@echo "... src/gameboy.o"
+	@echo "... src/gameboy.i"
+	@echo "... src/gameboy.s"
 	@echo "... src/interrupt.o"
 	@echo "... src/interrupt.i"
 	@echo "... src/interrupt.s"
+	@echo "... src/logger.o"
+	@echo "... src/logger.i"
+	@echo "... src/logger.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
@@ -435,6 +513,9 @@ help:
 	@echo "... src/ops/pfx.o"
 	@echo "... src/ops/pfx.i"
 	@echo "... src/ops/pfx.s"
+	@echo "... src/timer.o"
+	@echo "... src/timer.i"
+	@echo "... src/timer.s"
 .PHONY : help
 
 

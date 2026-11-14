@@ -3,9 +3,12 @@ gb-emulator: \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/../../../../lib/crti.o \
   /usr/lib/gcc/x86_64-pc-linux-gnu/16/crtbeginS.o \
   CMakeFiles/gb-emulator.dir/src/main.c.o \
+  CMakeFiles/gb-emulator.dir/src/gameboy.c.o \
   CMakeFiles/gb-emulator.dir/src/bus.c.o \
   CMakeFiles/gb-emulator.dir/src/cpu.c.o \
   CMakeFiles/gb-emulator.dir/src/interrupt.c.o \
+  CMakeFiles/gb-emulator.dir/src/timer.c.o \
+  CMakeFiles/gb-emulator.dir/src/logger.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/ld.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/alu.c.o \
   CMakeFiles/gb-emulator.dir/src/ops/bit.c.o \
@@ -53,11 +56,17 @@ gb-emulator: \
 
 CMakeFiles/gb-emulator.dir/src/main.c.o:
 
+CMakeFiles/gb-emulator.dir/src/gameboy.c.o:
+
 CMakeFiles/gb-emulator.dir/src/bus.c.o:
 
 CMakeFiles/gb-emulator.dir/src/cpu.c.o:
 
 CMakeFiles/gb-emulator.dir/src/interrupt.c.o:
+
+CMakeFiles/gb-emulator.dir/src/timer.c.o:
+
+CMakeFiles/gb-emulator.dir/src/logger.c.o:
 
 CMakeFiles/gb-emulator.dir/src/ops/ld.c.o:
 

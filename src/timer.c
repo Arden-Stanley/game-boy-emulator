@@ -9,16 +9,14 @@ static inline uint8_t tac_get_clock_select(Timer *timer) {
   return (timer->tac & 0x03);
 }
 
-Timer *timer_create() {
-  Timer *timer = malloc(sizeof(Timer));
+void timer_init(Timer *timer) {
   timer->div = 0x18;
   timer->tima = 0x00;
   timer->tma = 0x00;
   timer->tac = 0xF8;
-  return timer;
+  timer->cycle_count = 0;
+  timer->request_interrupt = false;
 }
-
-void timer_destroy(Timer *timer) { free(timer); }
 
 void timer_write(Timer *timer, TimerReg reg, uint8_t data) {
   switch (reg) {
@@ -50,37 +48,46 @@ uint8_t timer_read(Timer *timer, TimerReg reg) {
   }
 }
 
-static inline void div_increment(Timer *timer, uint16_t cycles) {
-  if (cycles >= 64) {
+static inline void div_increment(Timer *timer) {
+  if (timer->cycle_count >= 64) {
+    timer->div++;
   }
 }
 
-static inline void counter_increment(Timer *timer, uint16_t *cycles) {
+static inline void counter_increment(Timer *timer) {
   if (!tac_get_enable(timer)) {
     return;
   }
+
+  uint16_t timer_frequency = 0;
+
   switch (tac_get_clock_select(timer)) {
   case (0x00):
-    if (*cycles >= 256) {
-      *cycles -= 256;
-    }
+    timer_frequency = 256;
     break;
   case (0x01):
-    if (*cycles >= 4) {
-      *cycles -= 4;
-    }
+    timer_frequency = 4;
     break;
   case (0x02):
-    if (*cycles >= 16) {
-      *cycles -= 16;
-    }
+    timer_frequency = 16;
     break;
   case (0x03):
-    if (*cycles >= 64) {
-      *cycles -= 64;
-    }
+    timer_frequency = 64;
     break;
+  }
+
+  if (timer->cycle_count >= timer_frequency) {
+    timer->cycle_count -= timer_frequency;
+    if (timer->tima == 0xFF) {
+      timer->tima = timer->tma;
+      timer->request_interrupt = true;
+      return;
+    }
+    timer->tima++;
   }
 }
 
-void timer_increment(Timer *timer, uint16_t cycles) {}
+void timer_increment(Timer *timer) {
+  div_increment(timer);
+  counter_increment(timer);
+}

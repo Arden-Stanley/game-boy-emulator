@@ -24,9 +24,12 @@ typedef struct {
   uint8_t ie;
 } Bus;
 
+void bus_init(Bus *bus);
+
 uint8_t bus_read8(Bus *bus, uint16_t addr);
 void bus_write(Bus *bus, uint16_t addr, uint8_t data);
 
-void bus_ld_rom(Bus *bus, const char *path);
+void bus_load_rom(Bus *bus, const char *path);
+void bus_cleanup(Bus *bus);
 
 #endif

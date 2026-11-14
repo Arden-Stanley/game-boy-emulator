@@ -7,6 +7,12 @@
 },
 {
   "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/gameboy.c.o -c /home/arden/Projects/game-boy-emulator/src/gameboy.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/gameboy.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/gameboy.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
   "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/bus.c.o -c /home/arden/Projects/game-boy-emulator/src/bus.c",
   "file": "/home/arden/Projects/game-boy-emulator/src/bus.c",
   "output": "CMakeFiles/gb-emulator.dir/src/bus.c.o"
@@ -22,6 +28,18 @@
   "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/interrupt.c.o -c /home/arden/Projects/game-boy-emulator/src/interrupt.c",
   "file": "/home/arden/Projects/game-boy-emulator/src/interrupt.c",
   "output": "CMakeFiles/gb-emulator.dir/src/interrupt.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/timer.c.o -c /home/arden/Projects/game-boy-emulator/src/timer.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/timer.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/timer.c.o"
+},
+{
+  "directory": "/home/arden/Projects/game-boy-emulator/build",
+  "command": "/usr/bin/cc    -o CMakeFiles/gb-emulator.dir/src/logger.c.o -c /home/arden/Projects/game-boy-emulator/src/logger.c",
+  "file": "/home/arden/Projects/game-boy-emulator/src/logger.c",
+  "output": "CMakeFiles/gb-emulator.dir/src/logger.c.o"
 },
 {
   "directory": "/home/arden/Projects/game-boy-emulator/build",

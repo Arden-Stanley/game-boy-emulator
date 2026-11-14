@@ -47,6 +47,7 @@ typedef struct {
 
 typedef enum { FLAG_Z = 7, FLAG_N = 6, FLAG_H = 5, FLAG_C = 4 } Flags;
 
+void cpu_init(CPU *cpu);
 void cpu_set_flag(CPU *cpu, Flags flag, bool val);
 uint8_t cpu_get_flag(CPU *cpu, Flags flag);
 uint8_t cpu_get_imm8(CPU *cpu, Bus *bus);

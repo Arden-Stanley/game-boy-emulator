@@ -2,6 +2,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+void bus_init(Bus *bus) { memset(bus, 0, sizeof(Bus)); }
 
 uint8_t bus_read8(Bus *bus, uint16_t addr) {
   if (addr < 0x8000) {
@@ -62,7 +65,7 @@ void bus_write(Bus *bus, uint16_t addr, uint8_t data) {
   }
 }
 
-void bus_ld_rom(Bus *bus, const char *path) {
+void bus_load_rom(Bus *bus, const char *path) {
   FILE *file = fopen(path, "rb");
   if (file == NULL) {
     printf("No file exists: %s", path);
@@ -80,4 +83,9 @@ void bus_ld_rom(Bus *bus, const char *path) {
   fread(bus->rom, sizeof(uint8_t), size, file);
 
   fclose(file);
+}
+
+void bus_cleanup(Bus *bus) {
+  free(bus->rom);
+  free(bus->ext_ram);
 }
